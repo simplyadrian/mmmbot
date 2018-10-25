@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.8
 RUN apk update &&\
     apk upgrade &&\
     apk add ansible docker git nodejs py-pip \
