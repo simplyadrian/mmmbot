@@ -1,8 +1,8 @@
 FROM alpine:3.8
 RUN apk update &&\
     apk upgrade &&\
-    apk add ansible docker git nodejs py-pip \
-    npm gcc &&\
+    apk add --virtual build-dependencies build-base \
+    ansible docker git nodejs py-pip npm gcc &&\
     npm install -g yo generator-hubot &&\
     adduser -u 497 -h /mmmbot -D hubot hubot &&\
     pip install awscli boto boto3 credstash
@@ -13,6 +13,8 @@ RUN npm install --save https://github.com/simplyadrian/hubot-s3-brain/tarball/ma
     npm install hubot-jenkins-enhanced --save &&\
     npm install shelljs --save &&\
     npm install hubot-alias --save
+RUN apk del build-dependencies &&\
+    rm -rf /var/cache/apk/*
 ADD external-scripts.json .
 ADD build-pb.coffee ./scripts/build-pb.coffee
 ADD build-docker.coffee ./scripts/build-docker.coffee
