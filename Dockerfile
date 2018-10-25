@@ -14,8 +14,6 @@ RUN npm install --save https://github.com/simplyadrian/hubot-s3-brain/tarball/ma
     npm install hubot-jenkins-enhanced --save &&\
     npm install shelljs --save &&\
     npm install hubot-alias --save
-RUN apk del build-dependencies &&\
-    rm -rf /var/cache/apk/*
 ADD external-scripts.json .
 ADD build-pb.coffee ./scripts/build-pb.coffee
 ADD build-docker.coffee ./scripts/build-docker.coffee
