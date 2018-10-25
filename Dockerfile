@@ -3,7 +3,7 @@ RUN apk update &&\
     apk upgrade &&\
     apk add --virtual build-dependencies build-base \
     ansible docker git nodejs py-pip npm gcc \
-    python-dev libffi libffi-dev &&\
+    python-dev openssl-dev libffi libffi-dev &&\
     npm install -g yo generator-hubot &&\
     adduser -u 497 -h /mmmbot -D hubot hubot &&\
     pip install awscli boto boto3 credstash
